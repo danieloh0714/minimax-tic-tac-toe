@@ -1,5 +1,5 @@
 # Minimax Tic-Tac-Toe
-Tic-tac-toe game against minimax computer.
+Tic-Tac-Toe game against Minimax computer.
 
 ## To Play
 Run main.py to play. When prompted, choose either 'X' or 'O'. To make a move, enter in the number corresponding to the space you want to fill in.
