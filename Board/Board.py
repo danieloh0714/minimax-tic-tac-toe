@@ -26,28 +26,41 @@ class TerminalBoard(Board):
 		self.mcp = MinimaxComputerPlayer(self)
 
 	def draw_board(self):
+		"""
+		Prints out the current board state.
+		"""
 		print('\n')
 		for i in [0, 3, 6]:
 			print("\t\t\t %s | %s | %s \n" %(self.board_data[i], self.board_data[i + 1], self.board_data[i + 2]))
 
 	def available_moves(self):
+		"""
+		Returns an array of all available moves in the current board state.
+		"""
 		return [i for i, space in enumerate(self.board_data) if space == '-']
 
 	def is_winner(self, letter):
+		"""
+		Checks if letter (either 'X' or 'O') has won the game.
+		"""
+		# Check for three in a row.
 		for i in [0, 3, 6]:
 			if self.board_data[i] == letter and self.board_data[i + 1] == letter and self.board_data[i + 2] == letter:
 				return True
 		
+		# Check for three in a column.
 		for i in range(3):
 			if self.board_data[i] == letter and self.board_data[i + 3] == letter and self.board_data[i + 6] == letter:
-				return True	
-	
+				return True
+
+		# Check for three in a diagonal.
 		if self.board_data[0] == letter and self.board_data[4] == letter and self.board_data[8] == letter:
 			return True
 
 		if self.board_data[2] == letter and self.board_data[4] == letter and self.board_data[6] == letter:
-			return True			
+			return True
 
+		# Return False if no three in a row, column, or diagonal are the same.
 		return False
 
 	def play(self):
